@@ -2,6 +2,6 @@
 
 Random things.
  
- - [Microservices v1](./docs/MicroservicesV1.md)
+ - [Microservices v1](docs/MicroservicesV1.md)
 
- - [Microservices v2](./docs/MicroservicesV2.md)
+ - [Microservices v2](docs/MicroservicesV2.md)
