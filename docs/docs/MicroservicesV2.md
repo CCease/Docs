@@ -50,17 +50,17 @@ To solve theses problems, the concept of Microservices Architecture is adopted b
 
 Monolithic Architecture Example:
 
-![Monolitthic Architecture](https://ccease.github.io/Docs/Pictures/Richardson-microservices-part1-1_monolithic-architecture.png)
+![Monolitthic Architecture](../images/Richardson-microservices-part1-1_monolithic-architecture.png)
 
 
 
 Microservices Architecture Example:
 
-![Microservices](https://ccease.github.io/Docs/Pictures/Richardson-microservices-part1-2_microservices-architecture.png)
+![Microservices](../images/Richardson-microservices-part1-2_microservices-architecture.png)
 
 Another example:
 
-![Monolith and Microservices scalling](https://ccease.github.io/Docs/Pictures/MonolithMicro2.jpg)
+![Monolith and Microservices scalling](../images/MonolithMicro2.jpg)
 
 These services are loosely coupled and independently deployable. The boundary of the services is usually defined by the business capability of the organization to let the services independent from each other. Each service usually has their own databases to further decouple them.
 
@@ -115,7 +115,7 @@ Even if Microservices Architecture have so much advantage, it is not perfect.
   Although the complexity on each part of the application that are decomposed into services are decreased, but the overall complexity of the application is increased. Developers will need to handle the inter-process communication mechanism, deployment, monitoring, update and error handling of the services, service discovery problem and database consistency which are easy to handle on a Monolithic Architecture.
 
 
-![Amazon and Netflix Microservice](https://ccease.github.io/Docs/Pictures/Frame-25.png)
+![Amazon and Netflix Microservice](../images/Frame-25.png)
 
 - **Microservices Architecture requires a clear, distinct and well-defined product.**
 
@@ -141,7 +141,7 @@ To choose to implement Microservices Architecture on the application, we must no
 
 ## What is a container?
 
-![Deployment Evolution](https://ccease.github.io/Docs/Pictures/Evolutionofdeployment.png)
+![Deployment Evolution](../images/Evolutionofdeployment.png)
 Back in the days, organization runs their applications on physical servers. This solution has no way too define resources boundaries for applications in the physical server and cause resource allocation issues. The solution to this problem is to run each application on a different physical server but the resources will be highly underutilized and very expensive for any organization to maintain so many physical servers.
 
 Virtualization was introduced after this. It allows one physical server to run multiple Virtual Machine with defined resources boundaries. The Virtual Machine are separated from each other which provide a level of security. This allows the physical server to better utilize it s resources. The capability of running multiple virtual machine on one physical server also greatly reduces the cost of deploying application. Every Virtual machine is a full machine running all the components including operating system.
