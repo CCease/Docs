@@ -1,7 +1,3 @@
----
-typora-copy-images-to: ..\images
----
-
 # 我学了Java/Python/JavaScript ，但感觉什么都做不出来
 
 在实习做了一些东西，同时和朋友讨论有了一点想法，想尝试梳理一下，就写了这篇。
@@ -136,7 +132,7 @@ UI做出来了之后，我们要在button的widget里面的onPressed为他们增
 
 进去里面看看后，我们看到了这个。需要的资讯是“assets/audios/song1.mp3”，从这个format我们看得出这个就是文件路径filepath，而file_picker给我们的资讯也是文件路径filepath，代表我们可以使用这个```assetsAudioPlayer.open(Audio(filepath));``` ，让assetAudioPlayer知道我们想play哪一个音频文件，然后再用```assetsAudioPlayer.play()```让它播放音乐。同理，```assetsAudioPlayer.stop()```**应该**是拿来stop音乐的，他这里没有提供资讯，我们放进code里面自己试试就行了。
 
-知道了这些后，我们在我们的code里面内添加这段逻辑。**!!这段CODE不是完整的CODE!!，完整的CODE看[这里]()**
+知道了这些后，我们在我们的code里面内添加这段逻辑。**!!这段CODE不是完整的CODE!!，完整的CODE看[这里](https://github.com/CCease/audio_player/blob/master/lib/main.dart)**
 
 ```dart
 //创建一个AssetrsAudioPlayer的object
