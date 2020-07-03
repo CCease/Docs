@@ -152,11 +152,11 @@ UI弄完了，onPressed也弄好了，接下来我们只要补完\_play() 和 \_
 
 **因为什么都不懂，所以我们上Google，输入Flutter get file然后search，看有什么能被我们用的。**[第一个](https://flutter.dev/docs/cookbook/persistence/reading-writing-files)好像有用，我们按进去看看。
 
-<img src="../images/image-20200703101535462.png" alt="image-20200703101535462" style="zoom:67%;" />
+![image-20200703101535462](../images/image-20200703101535462.png)
 
 然后我们会去到这样一个界面。简单的读一下。
 
-<img src="../images/image-20200703101707843.png" alt="image-20200703101707843" style="zoom:67%;" />
+![image-20200703101707843](../images/image-20200703101707843.png)
 
 第一个按进去后，发现好像不是我们要的东西。从红线可以看出这个是拿来给app保存自己数据的，所以我们又回到google界面，然后按第三个[file_picker](https://pub.dev/packages/file_picker)。
 
@@ -172,9 +172,9 @@ UI弄完了，onPressed也弄好了，接下来我们只要补完\_play() 和 \_
 
 往下再翻一下，我们看到了一个example.gif和一个简单的usage介绍，感觉这就是我们要的东西，可是还需要更进一步的咨询，所以我们按那个蓝色的wiki。
 
-| <img src="../images/image-20200703103257921.png" alt="image-20200703103257921" style="zoom:67%;" /> | <img src="../images/image-20200703103509295.png" alt="image-20200703103509295" style="zoom:67%;" /> |
+| ![image-20200703103257921](../images/image-20200703103257921.png)| ![image-20200703103509295](../images/image-20200703103509295.png) |
 | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| <img src="../images/image-20200703103742322.png" alt="image-20200703103742322" style="zoom:67%;" /> | <img src="../images/image-20200703103604407.png" alt="image-20200703103604407" style="zoom:67%;" /> |
+| ![image-20200703103742322](../images/image-20200703103742322.png) | ![image-20200703103604407](../images/image-20200703103604407.png) |
 
 按了蓝色wiki后，我们按Methods，然后进去翻一下，我们会看到另外三张图的资讯，从中我们知道 ```FilePicker.getFile(type： FileType.audio)```会return一个File，而```FilePicker.getFilePath(type: FileType.audio)```会return一个String，value是filepath文件路径。知道了这个后，我们就要去看能不能通过Filepath/File来播放音频文件。可是我们也不知道怎样播放音频文件，所以我们继续google。
 
