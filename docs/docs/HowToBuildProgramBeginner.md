@@ -1,5 +1,7 @@
 # 我学了Java/Python/JavaScript ，但感觉什么都做不出来
 
+---
+
 在实习做了一些东西，同时和朋友讨论有了一点想法，想尝试梳理一下，就写了这篇。
 
 学习编程一段时间后，会感觉到自己有一种已经理解编程语言，但是还是无法做出任何东西的感觉，我认为这种感觉是因为对编程语言不正确的认知造成的。编程语言就好像一个积木，而一个program是由无数个积木精密的堆叠而成，从而对用户的输入产生适当的回应，形成功能 feature。
@@ -15,13 +17,27 @@
 
 比如:
 
-网络爬虫Web Crawler ： -> 访问到想要爬取的页面 -> 读取页面上的数据 -> 提取页面上的数据 -> 存储页面提取出来的数据
+- 网络爬虫Web Crawler ： -> 访问到想要爬取的页面 -> 读取页面上的数据 -> 提取页面上的数据 -> 存储页面提取出来的数据
 
-手机游戏外挂 Hack ( 比如锁血Hack )：-> 找到角色的血量存储在游戏的哪里 -> 改变游戏角色血量的数值 -> 维持游戏角色血量的数值 -> 限制反作弊系统
+- 手机游戏外挂 Hack ( 比如锁血Hack )：-> 找到角色的血量存储在游戏的哪里 -> 改变游戏角色血量的数值 -> 维持游戏角色血量的数值 -> 限制反作弊系统
+
+  
+
+**总结就是拆拆拆拆拆拆拆然后从可以做的那一步开始做。**
+
+基本就是这样，下面是例子。
 
 
 
-这里尝试使用Flutter (Why？因为~~很Coooool~~我没用过) 来制作一个运行在Android上的音频播放器。最主要的功能只有三个，读取音频文件然后播放，暂停，停止。要做的步骤如下：
+# 例子
+
+---
+
+这里尝试使用Flutter (Why？因为~~很Coooool~~我没用过) 来制作一个音频播放器。最主要的功能只有三个，读取音频文件然后播放，暂停，停止。
+
+
+
+把音频播放器拆完后大概是这样子的：
 
 1. 制作GUI交互界面
 
@@ -34,15 +50,17 @@
    2.3. 暂停音频文件
 
    2.4. 停止音频文件
+   
+   
 
-
+然后就可以开始做了。
 
 
 ## 制作GUI
 
 ---
 
-
+首先上网找怎样用Flutter。
 
 - [English Tutorial Part 1](https://flutter.dev/docs/get-started/codelab)
 - [English Tutorial Part 2](https://codelabs.developers.google.com/codelabs/first-flutter-app-pt2/)
@@ -51,24 +69,10 @@
 - [Chinese Tutorial Part 2](https://codelabs.flutter-io.cn/codelabs/first-flutter-app-pt2-cn/index.html#0)
 
 
-
-
-看完上面后，我们能知道：（不想看就看这个[video](https://www.youtube.com/watch?v=I9ceqw5Ny-4)）
+看完上面后，我们能知道：
 
 1. 如何在Flutter里创造UI
 2. 如何为UI增加交互性
-
-然后，我们就能够独立解决1了。
-
-这是我们看完Tutorial Part 1 可以做出来的东西。
-
-![App after finish part 1 tutorial](../images/FlutterPart1TutorialAndroid.png)
-
-
-
-这是我们看完Tutorial Part 2 可以做出来的东西。
-
-![App after finish part 2 tutorial](../images/FlutterPart2TutorialAndroid.png)
 
 看完之后，就可以自己制作music player的ui，这个时候里面的button还不能按。
 
@@ -76,17 +80,69 @@
 
 
 
+下面是**关键的code**，简明易懂，接下来我们只要补完\_play() 和 \_add() 和 \_stop() 就可以了，1搞定。**（ !!这段CODE不是完整的CODE!!，完整的CODE看[这里](https://github.com/CCease/audio_player/blob/master/lib/main.dart)）**
+
+```dart
+//这三个都是Function
+_play() {
+	//TODO：
+}
+
+_stop() async{
+	//TODO:
+}
+
+_add() async{
+	//TODO:
+}
+
+//--------Widget--------
+IconButton(
+    //第一个button的icon
+	icon: Icon(Icons.add),
+    //第一个button被按的时候执行的function ---------------- 关键！
+	onPressed: () => _add(),
+    //第一个button的size
+	iconSize: 50.0,
+    //第一个button的颜色
+	color: Colors.pink,
+),
+IconButton(
+    //第二个button的icon
+	icon: Icon(Icons.play_arrow),
+    //第二个button被按的时候执行的function ---------------- 关键！
+	onPressed: () => _play(),
+    //第二个button的icon size
+	iconSize: 50.0,
+    //第二个button的颜色
+	color: Colors.pink,
+),
+IconButton(
+    //和上面一样
+	icon: Icon(Icons.play_arrow),
+    //和上面一样------------------------------------------关键！
+	onPressed: () => _stop(),
+    //和上面一样
+	iconSize: 50.0,
+    //和上面一样
+	color: Colors.pink,
+),
+
+```
+
+
+
+
+
 ## 注入灵魂
 
----
+UI弄完了，onPressed也弄好了，接下来我们只要补完\_play() 和 \_add() 和 \_stop() 就可以了。
+
+1. \_add() 从用户设备里选音频文件。
+2. \_play() - 播放音频文件。（按了一次后会变pause）
+3. \_stop() - 停止播放。
 
 
-
-UI做出来了之后，我们要在button的widget里面的onPressed为他们增加code/代码/逻辑，whatever。现在有三个button，他们的功能分别是：
-
-1. Add button - 从用户设备里选音频文件。
-2. Play button - 播放音频文件。（按了一次后会变pause）
-3. Stop button - 停止播放。
 
 我们先从Add button开始做起，我们想要的效果是按了这个button后，app会给用户选择一个file，然后app能获取这个file的一些信息，让之后的play能够锁定这个file然后播放。一些信息是什么信息现在还不知道，要看让我们选file的那个东西能为我们提供什么。
 
@@ -94,7 +150,7 @@ UI做出来了之后，我们要在button的widget里面的onPressed为他们增
 
 ![image-20200703101404490](../images/image-20200703101404490.png)
 
-因为什么都不懂，所以我们上Google，输入Flutter get file然后search。[第一个](https://flutter.dev/docs/cookbook/persistence/reading-writing-files)好像有用，我们按进去看看。
+**因为什么都不懂，所以我们上Google，输入Flutter get file然后search，看有什么能被我们用的。**[第一个](https://flutter.dev/docs/cookbook/persistence/reading-writing-files)好像有用，我们按进去看看。
 
 <img src="../images/image-20200703101535462.png" alt="image-20200703101535462" style="zoom:67%;" />
 
@@ -132,7 +188,7 @@ UI做出来了之后，我们要在button的widget里面的onPressed为他们增
 
 进去里面看看后，我们看到了这个。需要的资讯是“assets/audios/song1.mp3”，从这个format我们看得出这个就是文件路径filepath，而file_picker给我们的资讯也是文件路径filepath，代表我们可以使用这个```assetsAudioPlayer.open(Audio(filepath));``` ，让assetAudioPlayer知道我们想play哪一个音频文件，然后再用```assetsAudioPlayer.play()```让它播放音乐。同理，```assetsAudioPlayer.stop()```**应该**是拿来stop音乐的，他这里没有提供资讯，我们放进code里面自己试试就行了。
 
-知道了这些后，我们在我们的code里面内添加这段逻辑。**!!这段CODE不是完整的CODE!!，完整的CODE看[这里](https://github.com/CCease/audio_player/blob/master/lib/main.dart)**
+知道了这些后，我们在我们的code里面内添加这段逻辑。**（ !!这段CODE不是完整的CODE!!，完整的CODE看[这里](https://github.com/CCease/audio_player/blob/master/lib/main.dart)）**
 
 ```dart
 //创建一个AssetrsAudioPlayer的object
@@ -190,20 +246,34 @@ IconButton(
 
 
 
-然后audio就能用了。
+然后这个app就能用了。
 
-总结一下：
+
+
+# 总结
+
+---
+
+对如何制作一个手机音频播放器的总结：
 
 1. 先把UI做出来。
+
 2. 知道在哪里写入交互逻辑（这里就是button的onPressed）。
+
 3. 把逻辑写进去，不知道用什么method就google，厉害一点就自己写。
+
 4. 出现预料之外的情况，写清楚为什么的就自己修，看不懂的就Google。
+
+   
 
 或者作弊一点：
 
-	1. 上youtube找已经做好了的，比如[这个](https://www.youtube.com/watch?v=nqULc3ykR_g)。
- 	2. 从他给的code/video里看他是用哪一个package，直接拿来用，就省去了自己找的时间。
- 	3. 如果他的package旧了，或者不支持你想要的新功能，去Google找符合你需求的。
+  1. 上youtube找已经做好了的，比如[这个](https://www.youtube.com/watch?v=nqULc3ykR_g)。
+  2. 从他给的code/video里看他是用哪一个package，直接拿来用，就省去了自己找的时间。
+
+  3. 如果他的package旧了，或者不支持你想要的新功能，去Google找符合你需求的。
+
+     
 
 懒人方法：
 
@@ -221,13 +291,21 @@ IconButton(
 
 
 
-图画看不出什么，可以直接看Code，或者把apk安装到手机（Android限定）上玩玩。
+图画看不出什么，可以直接看Code，或者把apk安装到Android机上玩玩。
 
 [Github](https://github.com/CCease/audio_player) (lib/main.dart)
 
 [Apk](https://github.com/CCease/audio_player/blob/master/app-release.apk)
 
 Note： 代码随便写的，质量很差。
+
+
+
+一上来就想着要做一个手机音频播放器，可是没有对整个app进行拆解，变成可以具体执行的步骤的话，只会感到无从下手，直接疑惑。
+
+
+
+**所以标题的 ”我学了Java/Python/JavaScript ，但感觉什么都做不出来“，应该换成 ”我学了Java/Python/JavaScript ，我想要做A，首先我要做a，然后b，然后c。我用Java/Python/JavaScript就可以做a，加一点google就可以做b和c，a+b+c=A，我把A做出来了“ 这样。**
 
 
 
@@ -238,6 +316,12 @@ Note： 代码随便写的，质量很差。
 - 所有Program都是这样做吗？
 
   不是，与其说这个是制作program的方法，更像是如何利用编程语言来完成一个特定的功能的方法。这个例子里没有涉及到软件的测试，工作的分工，程序员之间的协调等等等等，制作program的方法可以看[SDLC](https://www.tutorialspoint.com/sdlc/sdlc_overview.htm)，[Scrum](https://www.scrum.org/resources/what-is-scrum)。
+
+  
+
+- Programmer的工作内容都是这样吗？
+
+  不知道。
 
   
 
